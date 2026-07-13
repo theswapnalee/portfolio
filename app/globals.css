@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #000000;
+  --paper-raised: #1f150c;
+  --ink: #e1dcc9;
+  --ink-muted: rgba(225, 220, 201, 0.62);
+  --rule: #412d15;
+  --accent: #caa15a;
+  --accent-bg: rgba(202, 161, 90, 0.14);
+  --remove: #8a4a35;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-accent-bg: var(--accent-bg);
+  --color-remove: var(--remove);
+  --font-sans: "Inter", Arial, Helvetica, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.status-dot { background: var(--accent); }
+.status-dot::after { background: var(--accent); animation: pulse-ring 2.2s ease-out infinite; }
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-blink {
+    animation: none;
+    opacity: 1;
+  }
+}
